@@ -30,6 +30,8 @@ function! s:prefix_for_test(file)
   elseif a:file =~# '.feature$'
     if a:file =~# '\<spec/'
       return "rspec -rturnip "
+    elseif a:file =~# '\<spec_acceptance/'
+      return "rspec -rturnip -I spec_acceptance --default_path spec_acceptance "
     else
       return "cucumber "
     endif
